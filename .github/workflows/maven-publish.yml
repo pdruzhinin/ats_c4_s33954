@@ -17,4 +17,4 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: mvn exec
+    - run: mvn exec:exec
