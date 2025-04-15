@@ -1,5 +1,5 @@
 import static org.junit.jupiter.api.Assertions.*;
-        import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
@@ -11,10 +11,12 @@ import java.util.ArrayList;
 
 public class GradebookTest {
     private static Gradebook gradebook;
+
     @BeforeAll
     public static void setUp() {
         gradebook = new Gradebook();
     }
+
     @Test
     public void testAddSubject() {
         gradebook = new Gradebook();
@@ -22,6 +24,7 @@ public class GradebookTest {
         List<String> expectedList = List.of("Physics");
         assertEquals(expectedList, gradebook.getSubjects());
     }
+
     @Test
     public void testAddGradeToSubject() {
         gradebook = new Gradebook();
@@ -31,6 +34,7 @@ public class GradebookTest {
         expectedMap.put("Math", List.of(5.0));
         assertEquals(expectedMap, gradebook.getGrades());
     }
+
     @TestFactory
     Stream<DynamicTest> dynamicTestsForSubjects() {
         gradebook = new Gradebook();
@@ -43,7 +47,8 @@ public class GradebookTest {
                 .map(subject -> DynamicTest.dynamicTest("Test for subject: " + subject, () -> {
                     gradebook.addGrade(subject, 5.0);
                     gradebook.addGrade(subject, 4.0);
-                    assertEquals(2, gradebook.getGrades().get(subject).size(), "Test amount of grades for subject: %s".formatted(subject));
+                    assertEquals(2, gradebook.getGrades().get(subject).size(),
+                            "Test amount of grades for subject: %s".formatted(subject));
                     double actualAverage = gradebook.calcAvgForSubject(subject);
                     double expectedAverage = 4.5;
                     assertEquals(expectedAverage, actualAverage, 0.001,
@@ -96,8 +101,7 @@ public class GradebookTest {
         gradebook.addSubject("Math");
         assertThrows(
                 IllegalArgumentException.class,
-                () -> gradebook.addGrade("Chemistry", 5.0)
-        );
+                () -> gradebook.addGrade("Chemistry", 5.0));
     }
 
     @Test
