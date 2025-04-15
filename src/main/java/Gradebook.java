@@ -16,7 +16,9 @@ public final class Gradebook {
     this.subjectsGrades = new HashMap<>();
   }
 
-  /** Dodaje przedmiot do listy przedmiotów.
+  /**
+   * Dodaje przedmiot do listy przedmiotów.
+   *
    * @param subject Przedmiot do dodania.
    */
   public void addSubject(final String subject) {
@@ -24,11 +26,13 @@ public final class Gradebook {
     subjectsGrades.put(subject, new ArrayList<>());
   }
 
-  /** Dodaje ocenę do przedmiotu.
+  /**
+   * Dodaje ocenę do przedmiotu.
+   *
    * @param subject Przedmiot, do którego dodawana jest ocena.
    * @param grade Ocena do dodania.
-  */
-  public void addGrade(String subject, double grade) {
+   */
+  public void addGrade(final String subject, final double grade) {
     if (subjectsGrades.containsKey(subject)) {
       subjectsGrades.get(subject).add(grade);
     } else {
@@ -36,7 +40,9 @@ public final class Gradebook {
     }
   }
 
-  /** Zwraca średnią ocenę dla przedmiotu.
+  /**
+   * Zwraca średnią ocenę dla przedmiotu.
+   *
    * @param subject Przedmiot, dla którego obliczana jest średnia.
    */
   public double calcAvgForSubject(String subject) {
