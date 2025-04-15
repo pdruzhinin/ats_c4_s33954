@@ -19,6 +19,7 @@ jobs:
       with:
         java-version: '23'
         distribution: 'temurin'
+    - uses: super-linter/super-linter@v7.3.0
     - run: mvn exec:exec -Dexec.executable="echo" -Dexec.args="Dry run successful"
     - run: mvn test
     - run: mvn package
