@@ -4,25 +4,30 @@ import java.util.List;
 import java.util.Map;
 
 public final class Gradebook {
-  /** Przedmioty */
+  /** Przedmioty. */
   private final List<String> subjects;
 
-  /** Oceny */
+  /** Oceny. */
   private final Map<String, List<Double>> subjectsGrades;
 
-  /** Konstruktor */
+  /** Konstruktor. */
   public Gradebook() {
     this.subjects = new ArrayList<>();
     this.subjectsGrades = new HashMap<>();
   }
 
-  /** Dodaje przedmiot do listy przedmiotów */
-  public void addSubject(String subject) {
+  /** Dodaje przedmiot do listy przedmiotów.
+   * @param subject Przedmiot do dodania.
+   */
+  public void addSubject(final String subject) {
     subjects.add(subject);
     subjectsGrades.put(subject, new ArrayList<>());
   }
 
-  /** Dodaje ocenę do przedmiotu */
+  /** Dodaje ocenę do przedmiotu.
+   * @param subject Przedmiot, do którego dodawana jest ocena.
+   * @param grade Ocena do dodania.
+  */
   public void addGrade(String subject, double grade) {
     if (subjectsGrades.containsKey(subject)) {
       subjectsGrades.get(subject).add(grade);
@@ -31,7 +36,9 @@ public final class Gradebook {
     }
   }
 
-  /** Zwraca średnią ocenę dla przedmiotu */
+  /** Zwraca średnią ocenę dla przedmiotu.
+   * @param subject Przedmiot, dla którego obliczana jest średnia.
+   */
   public double calcAvgForSubject(String subject) {
     if (subjectsGrades.containsKey(subject)) {
       List<Double> grades = subjectsGrades.get(subject);
@@ -47,7 +54,7 @@ public final class Gradebook {
     }
   }
 
-  /** Zwraca średnią ocenę dla wszystkich przedmiotów */
+  /** Zwraca średnią ocenę dla wszystkich przedmiotów. */
   public double calcAvgForAllSubjects() {
     double sum = 0;
     double size = 0;
@@ -59,12 +66,12 @@ public final class Gradebook {
     return sum / size;
   }
 
-  /** Zwraca listę przedmiotów */
+  /** Zwraca listę przedmiotów. */
   public List<String> getSubjects() {
     return subjects;
   }
 
-  /** Zwraca mapę przedmiotów i ocen */
+  /** Zwraca mapę przedmiotów i ocen. */
   public Map<String, List<Double>> getGrades() {
     return subjectsGrades;
   }
