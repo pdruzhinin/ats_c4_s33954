@@ -22,7 +22,7 @@ jobs:
     - run: mvn exec:exec -Dexec.executable="echo" -Dexec.args="Dry run successful"
     - run: mvn test
     - run: mvn package
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: ats_c4
         path: target/*.jar
