@@ -3,20 +3,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Gradebook {
+public final class Gradebook {
+  /** Przedmioty */
   private final List<String> subjects;
+
+  /** Oceny */
   private final Map<String, List<Double>> subjectsGrades;
 
+  /** Konstruktor */
   public Gradebook() {
     this.subjects = new ArrayList<>();
     this.subjectsGrades = new HashMap<>();
   }
 
+  /** Dodaje przedmiot do listy przedmiotów */
   public void addSubject(String subject) {
     subjects.add(subject);
     subjectsGrades.put(subject, new ArrayList<>());
   }
 
+  /** Dodaje ocenę do przedmiotu */
   public void addGrade(String subject, double grade) {
     if (subjectsGrades.containsKey(subject)) {
       subjectsGrades.get(subject).add(grade);
@@ -25,6 +31,7 @@ public class Gradebook {
     }
   }
 
+  /** Zwraca średnią ocenę dla przedmiotu */
   public double calcAvgForSubject(String subject) {
     if (subjectsGrades.containsKey(subject)) {
       List<Double> grades = subjectsGrades.get(subject);
@@ -40,6 +47,7 @@ public class Gradebook {
     }
   }
 
+  /** Zwraca średnią ocenę dla wszystkich przedmiotów */
   public double calcAvgForAllSubjects() {
     double sum = 0;
     double size = 0;
@@ -51,10 +59,12 @@ public class Gradebook {
     return sum / size;
   }
 
+  /** Zwraca listę przedmiotów */
   public List<String> getSubjects() {
     return subjects;
   }
 
+  /** Zwraca mapę przedmiotów i ocen */
   public Map<String, List<Double>> getGrades() {
     return subjectsGrades;
   }
