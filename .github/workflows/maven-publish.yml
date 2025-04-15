@@ -18,5 +18,6 @@ jobs:
     - uses: actions/setup-java@v4
       with:
         java-version: '23'
+        distribution: 'temurin'
     - run: mvn exec:exec -Dexec.executable="echo" -Dexec.args="Dry run successful"
     - run: mvn test
